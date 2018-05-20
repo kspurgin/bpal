@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Scent:</strong>
+  <%= @scent_note.scent %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @scent_note.note %>
+</p>
+
+<%= link_to 'Edit', edit_scent_note_path(@scent_note) %> |
+<%= link_to 'Back', scent_notes_path %>

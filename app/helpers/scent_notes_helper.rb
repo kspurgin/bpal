@@ -1,0 +1,2 @@
+module ScentNotesHelper
+end

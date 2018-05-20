@@ -1,0 +1,27 @@
+<%= form_with(model: scent_note, local: true) do |form| %>
+  <% if scent_note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(scent_note.errors.count, "error") %> prohibited this scent_note from being saved:</h2>
+
+      <ul>
+      <% scent_note.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :scent_id %>
+    <%= form.text_field :scent_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :note_id %>
+    <%= form.text_field :note_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
