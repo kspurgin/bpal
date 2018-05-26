@@ -5,10 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th><%= sort_link 'name' %></th>
       <th>Description</th>
-      <th>Brand</th>
-      <th colspan="3"></th>
+      <th><%= sort_link 'brand_id', 'Brand' %></th>
     </tr>
   </thead>
 
@@ -17,7 +16,7 @@
       <tr>
         <td><%= scent.name %></td>
         <td><%= scent.description %></td>
-        <td><%= scent.brand %></td>
+        <td><%= scent.brand.name %></td>
         <td><%= link_to 'Show', scent %></td>
         <td><%= link_to 'Edit', edit_scent_path(scent) %></td>
         <td><%= link_to 'Destroy', scent, method: :delete, data: { confirm: 'Are you sure?' } %></td>

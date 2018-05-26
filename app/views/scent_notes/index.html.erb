@@ -14,8 +14,8 @@
   <tbody>
     <% @scent_notes.each do |scent_note| %>
       <tr>
-        <td><%= scent_note.scent %></td>
-        <td><%= scent_note.note %></td>
+        <td><%= scent_note.scent.name %></td>
+        <td><%= scent_note.note.name %></td>
         <td><%= link_to 'Show', scent_note %></td>
         <td><%= link_to 'Edit', edit_scent_note_path(scent_note) %></td>
         <td><%= link_to 'Destroy', scent_note, method: :delete, data: { confirm: 'Are you sure?' } %></td>

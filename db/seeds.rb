@@ -92,7 +92,13 @@ def populate_scent_note
   end
 end
 
-populate_brand
-populate_scent
-populate_note
-populate_scent_note
+def populate_product_type
+  types = ['atmosphere spray', 'hair gloss', 'perfume oil', 'perfume solid']
+  types.each { |t| ProductType.create(name: t) }
+end
+
+# populate_brand
+# populate_scent
+# populate_note
+# populate_scent_note
+populate_product_type

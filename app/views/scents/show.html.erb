@@ -12,8 +12,9 @@
 
 <p>
   <strong>Brand:</strong>
-  <%= @scent.brand %>
+  <%= @scent.brand.name %>
 </p>
 
 <%= link_to 'Edit', edit_scent_path(@scent) %> |
+<%= link_to 'Destroy', @scent, method: :delete, data: { confirm: 'Are you sure?' } %> | 
 <%= link_to 'Back', scents_path %>

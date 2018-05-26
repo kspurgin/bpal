@@ -2,12 +2,12 @@
 
 <p>
   <strong>Scent:</strong>
-  <%= @scent_note.scent %>
+  <%= @scent_note.scent.name %>
 </p>
 
 <p>
   <strong>Note:</strong>
-  <%= @scent_note.note %>
+  <%= @scent_note.note.name %>
 </p>
 
 <%= link_to 'Edit', edit_scent_note_path(@scent_note) %> |

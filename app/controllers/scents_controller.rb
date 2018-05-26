@@ -1,10 +1,11 @@
 class ScentsController < ApplicationController
+  helper_method :sort_column, :sort_direction
   before_action :set_scent, only: [:show, :edit, :update, :destroy]
 
   # GET /scents
   # GET /scents.json
   def index
-    @scents = Scent.all
+    @scents = Scent.order("#{sort_column} #{sort_direction}")
   end
 
   # GET /scents/1
@@ -16,7 +17,7 @@ class ScentsController < ApplicationController
   def new
     @scent = Scent.new
   end
-
+  
   # GET /scents/1/edit
   def edit
   end
@@ -70,5 +71,17 @@ class ScentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def scent_params
       params.require(:scent).permit(:name, :description, :brand_id)
+    end
+
+    def sortable_columns
+      ['name', 'brand_id']
+    end
+
+    def sort_column
+      sortable_columns.include?(params[:column]) ? params[:column] : 'name'
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
     end
 end
