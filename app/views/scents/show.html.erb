@@ -6,14 +6,16 @@
 </p>
 
 <p>
+  <strong>Brand:</strong>
+  <%= @scent.brand.name %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @scent.description %>
 </p>
 
-<p>
-  <strong>Brand:</strong>
-  <%= @scent.brand.name %>
-</p>
+<%= note_display(@scent) %>
 
 <%= link_to 'Edit', edit_scent_path(@scent) %> |
 <%= link_to 'Destroy', @scent, method: :delete, data: { confirm: 'Are you sure?' } %> | 
