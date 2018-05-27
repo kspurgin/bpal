@@ -2,6 +2,7 @@ class Scent < ApplicationRecord
   belongs_to :brand, touch: true
   has_many :scent_notes, dependent: :destroy
   has_many :notes, through: :scent_notes
+  default_scope { order(name_sort: :asc) }
   scope :indexed, -> { where('notes_count > 0') }
   scope :to_index, -> { where('notes_count = 0') }
 
@@ -27,7 +28,12 @@ class Scent < ApplicationRecord
     end
   end
 
-  private
+  def set_name_sort
+    sort_name = self.name.gsub(/^(A |An |The |L'|La |Le |Les )/,'')
+    write_attribute(:name_sort, sort_name)
+    save
+  end
+  
   def set_notes_count
     nc = self.notes.count
     write_attribute(:notes_count, nc)
