@@ -5,7 +5,12 @@ class ScentsController < ApplicationController
   # GET /scents
   # GET /scents.json
   def index
-    @scents = Scent.order("#{sort_column} #{sort_direction}")
+    if params[:note]
+      @scents = Scent.has_note(params[:note])
+    else
+      @scents = Scent.all
+    end
+    @scents.order("#{sort_column} #{sort_direction}")
   end
 
   # GET /scents/1
@@ -26,7 +31,6 @@ class ScentsController < ApplicationController
   # POST /scents.json
   def create
     @scent = Scent.new(scent_params)
-
     respond_to do |format|
       if @scent.save
         format.html { redirect_to @scent, notice: 'Scent was successfully created.' }
@@ -42,6 +46,7 @@ class ScentsController < ApplicationController
   # PATCH/PUT /scents/1.json
   def update
     respond_to do |format|
+      @scent.set_note_count
       if @scent.update(scent_params)
         format.html { redirect_to @scent, notice: 'Scent was successfully updated.' }
         format.json { render :show, status: :ok, location: @scent }

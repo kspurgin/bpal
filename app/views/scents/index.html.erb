@@ -5,22 +5,25 @@
 <table>
   <thead>
     <tr>
+      <th><%= sort_link 'brand_id', 'Brand' %></th>
       <th><%= sort_link 'name' %></th>
       <th>Description</th>
-      <th><%= sort_link 'brand_id', 'Brand' %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @scents.each do |scent| %>
-      <tr>
-        <td><%= scent.name %></td>
-        <td><%= scent.description %></td>
-        <td><%= scent.brand.name %></td>
-        <td><%= link_to 'Show', scent %></td>
-        <td><%= link_to 'Edit', edit_scent_path(scent) %></td>
-        <td><%= link_to 'Destroy', scent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= scent.brand.name %></td>
+      <td><%= scent.name %></td>
+      <td>
+	<%= scent.description %>
+	<%= note_display(scent) %>
+      </td>
+      <td><%= link_to 'Show', scent %></td>
+      <td><%= link_to 'Edit', edit_scent_path(scent) %></td>
+      <td><%= link_to 'Destroy', scent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>

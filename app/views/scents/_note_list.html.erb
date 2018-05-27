@@ -1,0 +1,6 @@
+<p>
+  <i>
+    Notes:
+    <%= raw thescent.notes.map { |n| link_to n.name, note_path(n.id) }.join(', ') %>
+  </i>
+</p>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_26_184216) do
+ActiveRecord::Schema.define(version: 2018_05_27_003409) do
 
   create_table "brands", force: :cascade do |t|
     t.string "name"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2018_05_26_184216) do
     t.integer "brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "decision"
+    t.integer "notes_count"
     t.index ["brand_id"], name: "index_scents_on_brand_id"
   end
 

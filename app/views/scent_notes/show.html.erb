@@ -11,4 +11,5 @@
 </p>
 
 <%= link_to 'Edit', edit_scent_note_path(@scent_note) %> |
+<%= link_to 'Destroy', @scent_note, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', scent_notes_path %>

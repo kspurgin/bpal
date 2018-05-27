@@ -25,6 +25,26 @@ def populate_brand
   end
 end
 
+def map_scent_decision(availability)
+  case availability
+  when 'Deaccessioned'
+    6
+  when 'Decision needed'
+    3
+  when 'Incoming'
+    3
+  when 'Info'
+    1
+  when 'Keeping'
+    4
+  when 'To trade or sell'
+    6
+  when 'Willing to part, but keeping otherwise'
+    5
+  when 'Wishlist'
+    2
+  end
+end
 
 def populate_scent
   uniqscents = {}
@@ -35,6 +55,7 @@ def populate_scent
     name = r.field('Name')
     desc = r.field('Description')
     bname = r.field('Brand')
+    availability = r.field('Availability')
     uname = "#{bname}/#{name}"
 
     if uniqscents.has_key?(uname)
@@ -43,7 +64,9 @@ def populate_scent
       brand_object = brand_lookup[r.field('Brand')]
       Scent.create( name: r.field('Name'),
                     description: r.field('Description'),
-                    brand: brand_object )
+                    brand: brand_object,
+                    decision: map_scent_decision(availability)
+                  )
     end
     
     uniqscents[uname] = 1
@@ -97,8 +120,8 @@ def populate_product_type
   types.each { |t| ProductType.create(name: t) }
 end
 
-# populate_brand
-# populate_scent
-# populate_note
-# populate_scent_note
+populate_brand
+populate_scent
+populate_note
+populate_scent_note
 populate_product_type

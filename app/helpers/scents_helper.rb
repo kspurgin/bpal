@@ -6,4 +6,10 @@ module ScentsHelper
     icon = column == sort_column ? icon : ""
     link_to "#{title} <span class='#{icon}'></span>".html_safe, {column: column, direction: direction}
   end
+
+  def note_display(scent)
+    if scent.notes_count > 0
+      render partial: 'note_list', locals: {thescent: scent}
+    end
+  end
 end

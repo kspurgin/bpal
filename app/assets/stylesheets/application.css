@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+
+table.th {vertical-align: text-top; }
+table.td {vertical-align: text-top; }
